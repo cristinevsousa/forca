@@ -10,26 +10,33 @@
 
 <body>
   <div class="container">
-    <h1>Jogo da Forca</h1>
-    <img id="forca" src="img/forca0.svg" alt="inicio-jogo">
-
-    <div class="palavra_forca">
-      <label id="palavra" class="palavra">
-      </label>
-    </div>
-
-    <div class="input">
-      <label>Tentativa</label>
-      <input id="input_text" type="text" class="input_text">
-      <button class="btn" onclick="jogar()">Jogar</button>
-    </div>
-
-    <div class="erros">
-      <label id="erros_label" class="erros_label" ></label>
-    </div>
-
+    <header>
+      <h1>Jogo da Forca</h1>
+    </header>
+    <main>
+      <div class="content">
+        <div class="imagem">
+          <img id="forca" src="img/forca0.svg" alt="inicio-jogo">
+        </div>
+        <div class="palavra_forca">
+          
+          <label id="palavra" class="palavra">
+            <label>_ _ _ _ _ _</label>
+          </label>
+        </div>
+        <div class="input"> 
+          <input id="input_text" type="text" class="input_text">
+          <button class="btn" onclick="jogar()">Jogar</button>
+        </div>
+        <div class="erros">
+          <label>Tentativas: </label>
+          <label id="erros_label" class="erros_label"></label>
+        </div>
+      </div>
+    </main>
+    <footer>
+    </footer>
   </div>
-
   <script src="index.js"></script>
 </body>
 

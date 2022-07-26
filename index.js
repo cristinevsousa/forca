@@ -1,5 +1,4 @@
 const palavras = ['teste', 'testezinho', 'testinho'];
-//codigo para function sorteia palavra
 
 String.prototype.replaceAt = function(index, replacement) {
     return this.substring(0, index) + replacement + this.substring(index + replacement.length);

@@ -1,27 +1,108 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: blueviolet;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
 
+header {
+    grid-area: h;
+}
+
+main {
+    grid-area: m;
+    
+}
+
+footer { 
+    grid-area: f;
+}
+
 h1 {
     size: 50px;
+    margin: 30px;
+    text-align: left;
 }
 
 .container {
-    border: 3px solid rgb(20, 3, 36);
-    padding: 30px;
-    margin: 30px;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 20vh 70vh 10vh;
+    grid-template-areas: "h h h""m m m""f f f";
 }
 
-.palavra_forca {
-    flex-direction: column;
+.content {
+    font-family: sans-serif;
+    display: grid;
+    justify-content: center;
+    height: 100%;
+}
+
+.imagem {
+    height: 90%;
+    width: 90%;
+    display: flex;
+    grid-area: 1 / 2 / 4 / 3;
+    margin-left: -65px;
+}
+
+.palavra_forca { 
+    font-size: xx-large;
+    margin-left: 165px;
+    margin-top: 145px; 
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.input {
+    grid-area: 4 / 2 / 6 / 3;
+    display: flex;
     align-items: center;
-    font-size: large;
+    column-gap: 5px;
+    margin-left: 115px;
+    margin-top: -65px;  
+}
+
+.input_text {  
+    font-size: x-large;   
+    height: 30px; 
+    width: 40px;
+    border-radius: 4px;
+}
+
+.btn {
+    border: 2px solid rgb(3, 5, 36);
+    background: rgb(25, 143, 221);
+    border-radius: 6px; 
+    height: 32px; 
+    width: 55px;
+    font-weight: bold;
+    transition: background 400ms;
+}
+
+.btn:hover {
+    background: rgb(3, 45, 73);
+}
+
+.erros {  
+    grid-area: 3 / 2 / 4 / 3;
+    margin-bottom: 58px;
+    margin-left: 95px;
+}
+
+#erros_label {
+    font-size: x-large; 
+}
+
+#forca {
+    height: 90%;
+    width: 225%;  
+}
+
+.teste {  
+    font-size: x-large;   
+    grid-area: 2 / 2 / 3 / 3;
 }
