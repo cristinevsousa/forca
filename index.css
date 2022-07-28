@@ -52,9 +52,16 @@ h1 {
 
 .palavra_forca { 
     font-size: xx-large;
-    margin-left: 165px;
-    margin-top: 145px; 
+    margin-left: 180px;
+    margin-top: 170px; 
     grid-area: 1 / 2 / 2 / 3;
+}
+
+.palavra {  
+    margin-bottom: -30px;
+    margin-left: -3px;
+    word-spacing: 22px;
+    white-space: pre;
 }
 
 .input {
@@ -100,9 +107,4 @@ h1 {
 #forca {
     height: 90%;
     width: 225%;  
-}
-
-.teste {  
-    font-size: x-large;   
-    grid-area: 2 / 2 / 3 / 3;
 }

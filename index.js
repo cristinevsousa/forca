@@ -1,23 +1,62 @@
-const palavras = ['teste', 'testezinho', 'testinho'];
-
-String.prototype.replaceAt = function(index, replacement) {
+String.prototype.replaceAt = function (index, replacement) {
     return this.substring(0, index) + replacement + this.substring(index + replacement.length);
 }
 
-let palavraEscolhida = 'teste';
+let palavraEscolhida = '';
 let strErros = '';
 let letraEntrada = '';
 let letrasPreenchidas = '';
 
-for (letra of palavraEscolhida) {
-    letrasPreenchidas += '_';
+//api de substantivos randômicos em inglês
+let url = 'https://random-word-form.herokuapp.com/random/noun';
+
+async function obterPalavra() {
+    await fetch(url)
+        .then(response => response.json())
+        .then(function (data) {
+            palavraEscolhida = data[0];
+        });
+
+    return palavraEscolhida;
+}
+
+(async () => {
+    try {
+        palavraEscolhida = await obterPalavra();
+        mostrarTracejado();
+        iniciarPreenchimento();
+
+        console.log(palavraEscolhida);
+    } catch (e) {
+        console.log(e);
+    }
+})();
+
+function mostrarTracejado() {
+    let tracejado = '';
+    for (let i = 0; i < palavraEscolhida.length; i++) {
+        tracejado += '_ ';
+    }
+
+    document.getElementById('tracejado').innerHTML = tracejado;
+}
+
+function iniciarPreenchimento() { 
+    for (let i = 0; i < palavraEscolhida.length; i++) {
+        letrasPreenchidas = letrasPreenchidas.replaceAt(i, ' ');
+    }
 }
 
 function jogar() {
-    let letraEntrada = document.getElementById('input_text').value;
+    letraEntrada = '';
+    letraEntrada = document.getElementById('input_text').value;
+    letraEntrada = letraEntrada.toLocaleLowerCase();
 
-    verificarJogada(letraEntrada);
-    verificarJogo();
+    if (letraEntrada == '') {
+        alert('Digite uma letra!');
+    } else {
+        verificarJogada(letraEntrada);
+    }
 
     document.getElementById('input_text').value = '';
 }
@@ -29,29 +68,42 @@ function verificarJogada(letraEntrada) {
     else if (palavraEscolhida.includes(letraEntrada)) {
         preencherAcerto(letraEntrada);
     }
-    else {
+    else if (!palavraEscolhida.includes(letraEntrada)) {
         preencherErro(letraEntrada);
         desenharForca(letraEntrada);
     }
+    alertar();
+}
+
+function alertar() {
+    new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 300)
+    }).then(verificarJogo);
 }
 
 function verificarJogo() {
 
     if (strErros.length == 6) {
-        alert('Game over'); //
+        alert('Game over');
+        reiniciarJogo();
     } else if (letrasPreenchidas == palavraEscolhida) {
-        alert('Parabéns, você venceu!'); //
+        alert('Parabéns, você venceu!');
+        reiniciarJogo();
     }
 }
 
 function preencherAcerto(letraEntrada) {
     let letraAcerto = letraEntrada;
 
-    for (let i = 0; i < letrasPreenchidas.length; i++){
+    for (let i = 0; i < palavraEscolhida.length; i++) {
         if (palavraEscolhida.charAt(i) == letraAcerto) {
             letrasPreenchidas = letrasPreenchidas.replaceAt(i, letraAcerto);
         }
     }
+
+    console.log(letrasPreenchidas, letrasPreenchidas.length);
 
     document.getElementById('palavra').innerHTML = letrasPreenchidas.toUpperCase();
 }
@@ -91,7 +143,7 @@ function desenharForca() {
 }
 
 function reiniciarJogo() {
-    window.location.reload; //
+    document.location.reload();
 }
 
 
