@@ -8,6 +8,7 @@ let letraEntrada = '';
 let letrasPreenchidas = '';
 
 //api de substantivos randômicos em inglês
+//https://github.com/dulldesk/words-api/
 let url = 'https://random-word-form.herokuapp.com/random/noun';
 
 async function obterPalavra() {
@@ -16,7 +17,6 @@ async function obterPalavra() {
         .then(function (data) {
             palavraEscolhida = data[0];
         });
-
     return palavraEscolhida;
 }
 
@@ -35,15 +35,15 @@ async function obterPalavra() {
 function mostrarTracejado() {
     let tracejado = '';
     for (let i = 0; i < palavraEscolhida.length; i++) {
-        tracejado += '_ ';
+        tracejado += '_';
     }
 
-    document.getElementById('tracejado').innerHTML = tracejado;
+    document.getElementById('palavra').innerHTML = tracejado;
 }
 
 function iniciarPreenchimento() { 
     for (let i = 0; i < palavraEscolhida.length; i++) {
-        letrasPreenchidas = letrasPreenchidas.replaceAt(i, ' ');
+        letrasPreenchidas = letrasPreenchidas.replaceAt(i, '_');
     }
 }
 

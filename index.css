@@ -58,9 +58,9 @@ h1 {
 }
 
 .palavra {  
-    margin-bottom: -30px;
-    margin-left: -3px;
-    word-spacing: 22px;
+    margin-bottom: -27px;
+    margin-left: -12px;
+    letter-spacing: 10px;
     white-space: pre;
 }
 
